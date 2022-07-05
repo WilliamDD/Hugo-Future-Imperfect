@@ -1,2 +1,22 @@
 {{ define "main" }}
+<!-- Main -->
+<div id="main">
+
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <p>{{ .Description }}</p>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="2015-11-01">{{ .PublishDate.Format "January 2, 2006" }}</time>
+                <a href="#" class="author"><span class="name">{{ .Params.Author }}</span><img src="/images/{{ .Params.Author }}.jpg" alt="" /></a>
+            </div>
+        </header>
+        <a href="{{ .Permalink }}" class="image featured"><img src="{{ .Params.FeatureImage }}" alt="" height="341" /></a>
+        {{ .Content }}
+        <br /><br />
+    </article>
+
+</div>
 {{ end }}

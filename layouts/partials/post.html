@@ -1,0 +1,26 @@
+<!-- Post -->
+<article class="post">
+    <header>
+        <div class="title">
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <p>{{ .Description }}</p>
+        </div>
+        <div class="meta">
+            <time class="published" datetime="2015-11-01">{{ .PublishDate.Format "January 2, 2006" }}</time>
+            <a href="#" class="author"><span class="name">{{ .Params.Author }}</span><img src="images/{{ .Params.Author }}.jpg" alt="" /></a>
+        </div>
+    </header>
+    <a href="{{ .Permalink }}" class="image featured"><img src="{{ .Params.FeatureImage }}" alt="" height="341" /></a>
+    {{ .Summary }}
+    <br /><br />
+    <footer>
+        <ul class="actions">
+            <li><a href="{{ .Permalink }}" class="button large">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+            <li><a href="#">General</a></li>
+            <li><a href="#" class="icon solid fa-heart">28</a></li>
+            <li><a href="#" class="icon solid fa-comment">128</a></li>
+        </ul>
+    </footer>
+</article>
