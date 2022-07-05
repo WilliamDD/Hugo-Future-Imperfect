@@ -59,7 +59,7 @@
                         <div class="published">{{ .Count }} Posts</div>
                     </header>
                     <a href='{{ $.Site.BaseURL}}{{ $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class="image"><img
-                            src="/images/pic08.jpg" alt="Feature image of {{ .Name }}" /></a>
+                            src="/images/pic08.jpg" alt="Feature image of {{ .Name }}" height="75" width="75"/></a>
                 </article>
             </li>
             {{ end }}
