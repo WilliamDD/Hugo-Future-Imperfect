@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!-- Main -->
-<div id="main">
+<main id="main">
     {{ $paginator := .Paginate (cond .IsHome (where site.RegularPages "Type" "in" site.Params.mainSections)
     (.Data.Pages) ) }}
     {{ range $paginator.Pages }}
@@ -21,14 +21,14 @@
         <li><a href="#" class="disabled button large next">Next Page</a></li>
         {{ end }}
     </ul>
-</div>
+</main>
 
 <!-- Sidebar -->
-<section id="sidebar">
+<aside id="sidebar">
 
     <!-- Intro -->
     <section id="intro">
-        <a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+        <a href="/" class="logo"><img src="/images/logo.jpg" alt="Logo" /></a>
         <header>
             <h2>{{ .Title }}</h2>
             <p>{{ .Description }}</p>
@@ -75,10 +75,9 @@
             <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
             <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
         </ul>
-        <p class="copyright">&copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>. Images: <a
-                href="http://unsplash.com">Unsplash</a>.</p>
+        <p class="copyright">{{ .Site.Copyright }} <br />DESIGN: <a href="http://html5up.net">HTML5 UP</a>. </p>
     </section>
 
-</section>
+</aside>
 
 {{ end }}
