@@ -6,16 +6,38 @@
         <header>
             <div class="title">
                 <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-                <p>{{ .Description }}</p>
+                <p>
+                    {{ range .Params.tags }}
+                    {{ . }} &nbsp;
+                    {{ end }}
+                </p>
             </div>
             <div class="meta">
                 <time class="published" datetime="2015-11-01">{{ .PublishDate.Format "January 2, 2006" }}</time>
-                <a href="#" class="author"><span class="name">{{ .Params.Author }}</span><img src="/images/{{ .Params.Author }}.jpg" alt="" /></a>
+                {{ if isset .Params "author" }}
+                {{ $author := index .Site.Data.authors .Params.Author }}
+                <a href="{{ $author.social.website }}" class="author"><span class="name">{{ $author.name }}</span><img
+                        src="{{ $author.image }}" alt="Avatar of {{ $author.name }}" /></a>
+                {{ else }}
+                <a href="#" class="author"><span class="name">Unknown</span><img src="/images/avatar.jpg"
+                        alt="Avatar of unknown" /></a>
+                {{ end }}
             </div>
         </header>
-        <a href="{{ .Permalink }}" class="image featured"><img src="{{ .Params.FeatureImage }}" alt="" height="341" /></a>
+        <a href="{{ .Permalink }}" class="image featured"><img src="{{ .Params.FeatureImage }}" alt=""
+                height="341" /></a>
         {{ .Content }}
         <br /><br />
+        <footer>
+            <ul class="actions">
+                <li><a href="{{ .Permalink }}" class="button large">Continue reading this article</a></li>
+            </ul>
+            <ul class="stats">
+                {{ range .Params.tags }}
+                    <li><a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> </li>
+                {{ end }}
+            </ul>
+        </footer>
     </article>
 
 </div>
