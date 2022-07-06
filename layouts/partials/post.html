@@ -16,7 +16,7 @@
                 {{ $author := index .Site.Data.authors .Params.Author }}
                 <a href="{{ $author.social.website }}" class="author"><span class="name">{{ $author.name }}</span><img src="{{ $author.image }}" alt="Avatar of {{ $author.name }}" /></a>
             {{ else }}
-                <a href="#" class="author"><span class="name">Unknown</span><img src="/images/avatar.jpg" alt="Avatar of unknown" /></a>
+                <a href="#" class="author"><span class="name">Unknown</span><img src="/images/avatar.jpg" alt="Avatar of unknown" height="45"/></a>
             {{ end }}
             
         </div>
