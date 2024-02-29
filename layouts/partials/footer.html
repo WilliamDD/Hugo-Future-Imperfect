@@ -1,1 +1,19 @@
-<p>Copyright {{ now.Year }}. All rights reserved.</p>
+<!-- Footer -->
+<section id="footer">
+    <ul class="icons">
+        {{ with .Site.Social.twitter -}}
+        <li><a href="https://twitter.com/{{ . }}" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        {{ end -}}
+        {{ with .Site.Social.facebook }}
+        <li><a href="https://www.facebook.com/{{ . }}" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        {{ end }}
+        {{ with .Site.Social.instagram -}}
+        <li><a href="https://instagram.com/{{ . }}" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        {{ end -}}
+        {{ with .Site.Social.linkedin -}}
+        <li><a href="https://www.linkedin.com/in/{{ . }}/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        {{ end -}}
+        <li><a href="{{ "index.xml" | absURL }}" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+    </ul>
+    <p class="copyright">{{ .Site.Copyright }}</p>
+</section>

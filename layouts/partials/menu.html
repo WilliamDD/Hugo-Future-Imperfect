@@ -1,51 +1,27 @@
-{{- /*
-Renders a menu for the given menu ID.
+<!-- Menu -->
+<section id="menu">
 
-@context {page} page The current page.
-@context {string} menuID The menu ID.
+    {{ partial "search.html" . }}
 
-@example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-*/}}
-
-{{- $page := .page }}
-{{- $menuID := .menuID }}
-
-{{- with index site.Menus $menuID }}
-  <nav>
-    <ul>
-      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
-    </ul>
-  </nav>
-{{- end }}
-
-{{- define "partials/inline/menu/walk.html" }}
-  {{- $page := .page }}
-  {{- range .menuEntries }}
-    {{- $attrs := dict "href" .URL }}
-    {{- if $page.IsMenuCurrent .Menu . }}
-      {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-    {{- else if $page.HasMenuCurrent .Menu .}}
-      {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
-    {{- end }}
-    {{- $name := .Name }}
-    {{- with .Identifier }}
-      {{- with T . }}
-        {{- $name = . }}
-      {{- end }}
-    {{- end }}
-    <li>
-      <a
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-      >{{ $name }}</a>
-      {{- with .Children }}
-        <ul>
-          {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+    <!-- Links -->
+    <section>
+        <ul class="links">
+            {{ range $key, $value := .Site.Taxonomies.categories }}
+            <li>
+                <a href='{{ $.Site.BaseURL}}/categories/{{ $key }}/'>
+                    <h3>{{ $key | humanize }}</h3>
+                    <p>{{ $value.Count }} Articles</p>
+                </a>
+            </li>
+            {{ end }}
         </ul>
-      {{- end }}
-    </li>
-  {{- end }}
-{{- end }}
+    </section>
+
+    <!-- Actions -->
+    {{/*  <section>
+        <ul class="actions stacked">
+            <li><a href="/categories" class="button large fit">All categories</a></li>
+        </ul>
+    </section>  */}}
+
+</section>

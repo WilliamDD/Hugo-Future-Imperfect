@@ -1,2 +1,20 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<!-- Header -->
+<header id="header">
+    <h1><a href="/">{{ .Site.Title }}</a></h1>
+    <nav class="links">
+        {{ partial "menu-items.html" (dict "menuID" "main1" "page" .) }}
+    </nav>
+    <nav class="main">
+        <ul>
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="/search">
+                    <input id="search-query" type="text" name="q" placeholder="Search" />
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
